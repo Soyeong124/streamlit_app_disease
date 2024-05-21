@@ -5,6 +5,16 @@ import pickle
 from sklearn.metrics.pairwise import cosine_similarity
 from konlpy.tag import Kkma
 import streamlit.components.v1 as components
+import os
+import jpype
+import jpype.imports
+
+# JVM 경로 설정
+jvmpath = jpype.getDefaultJVMPath()
+
+# JVM 시작 전 이미 시작된 경우 확인
+if not jpype.isJVMStarted():
+    jpype.startJVM(jvmpath, "-Djava.class.path=/usr/lib/jvm/java-11-openjdk-amd64")
 
 
 
