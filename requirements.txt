@@ -2,5 +2,5 @@ streamlit
 pandas
 numpy
 scikit-learn
-konlpy
-jpype1
+konlpy=0.6.0=pypi_0
+jpype1=1.4.0=pypi_0
