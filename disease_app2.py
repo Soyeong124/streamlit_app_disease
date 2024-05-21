@@ -20,6 +20,8 @@ kkma = Kkma()
 with open('processed_data.pkl', 'rb') as f:
     data, tokenized_symptoms, tfidf_matrix, vectorizer = pickle.load(f)
 
+sys_data = pd.read_csv('symptom_description_no_dupl.csv')
+
 def predict(input_value_raw):
     input_values = input_value_raw.split(",")
 
@@ -33,7 +35,7 @@ def predict(input_value_raw):
     input_tokenized = [" ".join(kkma.morphs(input_value)) for input_value in input_values]
     
     for input_value, input_tok in zip(input_values, input_tokenized):
-        for index, row in data.iterrows():
+        for index, row in sys_data.iterrows():
             symptom = row['symptoms']
             if symptom in input_value:
                 # symptoms이 완전히 일치하는 경우에 대해 처리
