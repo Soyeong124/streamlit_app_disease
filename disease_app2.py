@@ -113,7 +113,7 @@ components.html("""
                 .link-button {
                     background: none;
                     border: none;
-                    color: orange;
+                    color: rgb(232,93,33);
                     text-decoration: underline;
                     cursor: pointer;
                     font-size: 16px;
