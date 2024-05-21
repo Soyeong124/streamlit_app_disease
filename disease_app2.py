@@ -6,15 +6,10 @@ from sklearn.metrics.pairwise import cosine_similarity
 from konlpy.tag import Kkma
 import streamlit.components.v1 as components
 import os
-import jpype
-import jpype.imports
 
-# JVM 경로 설정
-jvmpath = jpype.getDefaultJVMPath()
-
-# JVM 시작 전 이미 시작된 경우 확인
-if not jpype.isJVMStarted():
-    jpype.startJVM(jvmpath, "-Djava.class.path=/usr/lib/jvm/java-11-openjdk-amd64")
+# 수정사항 1 - konlpy 설치를 위해 자바홈 설정
+import os
+os.environ['JAVA_HOME'] = '/usr/lib/jvm/java-11-openjdk-amd64'  # 설치 경로에 맞게 수정
 
 
 
