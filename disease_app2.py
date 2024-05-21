@@ -106,6 +106,16 @@ if st.button('확인'):
     else:
         st.warning("증상 설명을 입력해주세요")
 
+components.html("""
+    <html>
+        <body>
+            <button onclick="window.open('https://secret-map-dc8.notion.site/6c1f9c20a50c482fa6386331d8e576e7?v=50c865ffe0ea43cca6b225c220a6a85e&pvs=4', '_blank');">
+                원하는 증상이 안나오나요?
+            </button>
+        </body>
+    </html>
+    """, height=50)
+
 
 
 # 예측된 증상 표시
