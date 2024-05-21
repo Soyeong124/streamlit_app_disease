@@ -108,12 +108,18 @@ if st.button('확인'):
 
 # "원하는 증상이 안나오나요?" 버튼 생성
 # "원하는 증상이 안나오나요?" 버튼 생성
-if st.button("원하는 증상이 안나오나요?"):
-    st.markdown("""
-        <script type="text/javascript">
-        window.location.href = "https://secret-map-dc8.notion.site/6c1f9c20a50c482fa6386331d8e576e7?v=50c865ffe0ea43cca6b225c220a6a85e&pvs=4";
-        </script>
-    """, unsafe_allow_html=True)
+components.html("""
+    <button onclick="window.location.href='https://secret-map-dc8.notion.site/6c1f9c20a50c482fa6386331d8e576e7?v=50c865ffe0ea43cca6b225c220a6a85e&pvs=4';">
+        원하는 증상이 안나오나요?
+    </button>
+    """, height=50)
+
+components.html("""
+                    <h3 id="scroll-target" style="text-align: center;">🧬관련 있는 질병이에요!</h3>
+                    <script>
+                        document.getElementById('scroll-target').scrollIntoView();
+                    </script>
+                """, height=30)
 
 
 # 예측된 증상 표시
