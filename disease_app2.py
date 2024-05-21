@@ -127,7 +127,7 @@ components.html("""
             </style>
         </head>
         <body>
-            <button class="link-button" onclick="window.open('https://secret-map-dc8.notion.site/6c1f9c20a50c482fa6386331d8e576e7?v=50c865ffe0ea43cca6b225c220a6a85e&pvs=4', '_blank');">
+            <button class="link-button" onclick="window.open('https://secret-map-dc8.notion.site/4a4f6187c52a4375a9aacc964340a6c6?v=f910f03a1c564805a7a120cda97bd370&pvs=4', '_blank');">
                 원하는 증상이 안 나오나요?
             </button>
         </body>
