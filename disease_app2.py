@@ -105,7 +105,7 @@ if st.button('확인'):
                 st.error("일치하는 증상이 없어요. 다시 입력해주세요.")
     else:
         st.warning("증상 설명을 입력해주세요")
-        
+
 # "원하는 증상이 안나오나요?" 버튼 생성
 if st.button("원하는 증상이 안나오나요?"):
     st.write('<meta http-equiv="refresh" content="0;URL=https://secret-map-dc8.notion.site/6c1f9c20a50c482fa6386331d8e576e7?v=50c865ffe0ea43cca6b225c220a6a85e&pvs=4">', unsafe_allow_html=True)
