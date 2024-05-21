@@ -108,32 +108,6 @@ if st.button('확인'):
     else:
         st.warning("증상 설명을 입력해주세요")
 
-components.html("""
-    <html>
-        <head>
-            <style>
-                .link-button {
-                    background: none;
-                    border: none;
-                    color: rgb(232,93,33);
-                    text-decoration: underline;
-                    cursor: pointer;
-                    font-size: 16px;
-                    font-family: inherit;
-                }
-                .link-button:hover {
-                    color: darkblue;
-                }
-            </style>
-        </head>
-        <body>
-            <button class="link-button" onclick="window.open('https://secret-map-dc8.notion.site/4a4f6187c52a4375a9aacc964340a6c6?v=f910f03a1c564805a7a120cda97bd370&pvs=4', '_blank');">
-                원하는 증상이 안 나오나요?
-            </button>
-        </body>
-    </html>
-    """, height=50)
-
 
 
 # 예측된 증상 표시
@@ -218,3 +192,30 @@ if 'response' in st.session_state and st.session_state['response']:
 
     else:
         st.write("일치하는 증상이 없어요. 다시 입력해주세요.")
+
+
+components.html("""
+    <html>
+        <head>
+            <style>
+                .link-button {
+                    background: none;
+                    border: none;
+                    color: rgb(232,93,33);
+                    text-decoration: underline;
+                    cursor: pointer;
+                    font-size: 16px;
+                    font-family: inherit;
+                }
+                .link-button:hover {
+                    color: darkblue;
+                }
+            </style>
+        </head>
+        <body>
+            <button class="link-button" onclick="window.open('https://secret-map-dc8.notion.site/4a4f6187c52a4375a9aacc964340a6c6?v=f910f03a1c564805a7a120cda97bd370&pvs=4', '_blank');">
+                원하는 증상이 안 나오나요?
+            </button>
+        </body>
+    </html>
+    """, height=50)
