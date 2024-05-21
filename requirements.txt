@@ -3,4 +3,4 @@ pandas
 numpy
 scikit-learn
 konlpy==0.6.0
-jpype1==1.4.0
+jpype1
