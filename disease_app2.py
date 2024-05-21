@@ -108,8 +108,24 @@ if st.button('확인'):
 
 components.html("""
     <html>
+        <head>
+            <style>
+                .link-button {
+                    background: none;
+                    border: none;
+                    color: blue;
+                    text-decoration: underline;
+                    cursor: pointer;
+                    font-size: 16px;
+                    font-family: inherit;
+                }
+                .link-button:hover {
+                    color: darkblue;
+                }
+            </style>
+        </head>
         <body>
-            <button onclick="window.open('https://secret-map-dc8.notion.site/6c1f9c20a50c482fa6386331d8e576e7?v=50c865ffe0ea43cca6b225c220a6a85e&pvs=4', '_blank');">
+            <button class="link-button" onclick="window.open('https://secret-map-dc8.notion.site/6c1f9c20a50c482fa6386331d8e576e7?v=50c865ffe0ea43cca6b225c220a6a85e&pvs=4', '_blank');">
                 원하는 증상이 안나오나요?
             </button>
         </body>
