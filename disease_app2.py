@@ -105,6 +105,10 @@ if st.button('확인'):
                 st.error("일치하는 증상이 없어요. 다시 입력해주세요.")
     else:
         st.warning("증상 설명을 입력해주세요")
+        
+# "원하는 증상이 안나오나요?" 버튼 생성
+if st.button("원하는 증상이 안나오나요?"):
+    st.write('<meta http-equiv="refresh" content="0;URL=https://secret-map-dc8.notion.site/6c1f9c20a50c482fa6386331d8e576e7?v=50c865ffe0ea43cca6b225c220a6a85e&pvs=4">', unsafe_allow_html=True)
 
 
 # 예측된 증상 표시
@@ -115,17 +119,17 @@ if 'response' in st.session_state and st.session_state['response']:
 
     if high_confidence_symptoms or low_confidence_symptoms:
         if high_confidence_symptoms:
-            st.write(f"당신의 증상은 아래와 같아요   \n \n  해당하는 증상을 체크하고   \n    아래 '질병 예측하기' 버튼을 클릭해주세요", text_color="gray")
+            st.write(f"당신의 증상은 아래와 같아요   \n \n  해당하는 증상을 체크하고   \n  아래 '질병 예측하기' 버튼을 클릭해주세요", text_color="gray")
             for item in high_confidence_symptoms:
                 if st.checkbox(item['symptom'], key=f"high_{item['symptom']}"):
                     if item['symptom'] not in st.session_state['selected_symptoms']:
                         st.session_state['selected_symptoms'].append(item['symptom'])
         
         if low_confidence_symptoms:
-            st.write("다음 증상이 예측돼요:")
+            st.write("다음 증상이 예상돼요:")
             for item in low_confidence_symptoms:
-                if st.checkbox(item['symptom'], value=item['symptom'] in st.session_state.get('selected_symptoms', []), key=f"low_{item['symptom']}"):
-                    if item['symptom'] not in st.session_state.get('selected_symptoms', []):
+                if st.checkbox(item['symptom'], key=f"low_{item['symptom']}"):
+                    if item['symptom'] not in st.session_state['selected_symptoms']:
                         st.session_state['selected_symptoms'].append(item['symptom'])
 
         if st.session_state['selected_symptoms']:
