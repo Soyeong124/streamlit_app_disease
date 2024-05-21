@@ -113,7 +113,7 @@ components.html("""
                 .link-button {
                     background: none;
                     border: none;
-                    color: blue;
+                    color: orange;
                     text-decoration: underline;
                     cursor: pointer;
                     font-size: 16px;
