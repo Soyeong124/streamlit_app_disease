@@ -7,6 +7,15 @@ from konlpy.tag import Kkma
 import streamlit.components.v1 as components
 import os
 
+
+
+def local_css(file_name):
+    with open(file_name, encoding='utf-8') as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
+
+local_css('css/style.css')
+
 # konlpy 설치를 위해 자바홈 설정 
 import os
 os.environ['JAVA_HOME'] = '/usr/lib/jvm/java-11-openjdk-amd64'  # 설치 경로에 맞게 수정
@@ -155,25 +164,25 @@ if 'response' in st.session_state and st.session_state['response']:
                             st.image(row['disease_img'], use_column_width=True)
 
                         if row['detailed_symptoms'].strip():  # 상세 증상이 비어 있지 않은 경우에만 출력
-                            st.write(f"<h3>상세 증상</h3><p style='font-size:16px;'>{row['detailed_symptoms']}</p>", unsafe_allow_html=True)
+                            st.write(f"<h3>상세 증상</h3><p style='font-size:18px;'>{row['detailed_symptoms']}</p>", unsafe_allow_html=True)
                         if row['department'].strip():  # 진료과가 비어 있지 않은 경우에만 출력
-                            st.write(f"<h3>진료과</h3><p style='font-size:16px;'>{row['department']}</p>", unsafe_allow_html=True)
+                            st.write(f"<h3>진료과</h3><p style='font-size:18px;'>{row['department']}</p>", unsafe_allow_html=True)
                         if row['related_diseases'].strip():  # 관련 질환이 비어 있지 않은 경우에만 출력
-                            st.write(f"<h3>관련 질환</h3><p style='font-size:16px;'>{row['related_diseases']}</p>", unsafe_allow_html=True)
+                            st.write(f"<h3>관련 질환</h3><p style='font-size:18px;'>{row['related_diseases']}</p>", unsafe_allow_html=True)
                         if row['synonyms'].strip():  # 동의어가 비어 있지 않은 경우에만 출력
-                            st.write(f"<h3>동의어</h3><p style='font-size:16px;'>{row['synonyms']}</p>", unsafe_allow_html=True)
+                            st.write(f"<h3>동의어</h3><p style='font-size:18px;'>{row['synonyms']}</p>", unsafe_allow_html=True)
                         if row['disease_course'].strip():  # 질병 경과가 비어 있지 않은 경우에만 출력
-                            st.write(f"<h3>질병 경과</h3><p style='font-size:16px;'>{row['disease_course']}</p>", unsafe_allow_html=True)
+                            st.write(f"<h3>질병 경과</h3><p style='font-size:18x;'>{row['disease_course']}</p>", unsafe_allow_html=True)
                         if row['disease_specific_diet'].strip():  # 특별 식이 요법이 비어 있지 않은 경우에만 출력
-                            st.write(f"<h3>특별 식이 요법</h3><p style='font-size:16px;'>{row['disease_specific_diet']}</p>", unsafe_allow_html=True)
+                            st.write(f"<h3>특별 식이 요법</h3><p style='font-size:18px;'>{row['disease_specific_diet']}</p>", unsafe_allow_html=True)
                         if row['diet_therapy'].strip():  # 식이 요법이 비어 있지 않은 경우에만 출력
-                            st.write(f"<h3>식이 요법</h3><p style='font-size:16px;'>{row['diet_therapy']}</p>", unsafe_allow_html=True)
+                            st.write(f"<h3>식이 요법</h3><p style='font-size:18px;'>{row['diet_therapy']}</p>", unsafe_allow_html=True)
                         if row['recommended_food'].strip():  # 추천 음식이 비어 있지 않은 경우에만 출력
-                            st.write(f"<h3>추천 음식</h3><p style='font-size:16px;'>{row['recommended_food']}</p>", unsafe_allow_html=True)
+                            st.write(f"<h3>추천 음식</h3><p style='font-size:18px;'>{row['recommended_food']}</p>", unsafe_allow_html=True)
                         if row['caution_food'].strip():  # 주의 음식이 비어 있지 않은 경우에만 출력
-                            st.write(f"<h3>주의 음식</h3><p style='font-size:16px;'>{row['caution_food']}</p>", unsafe_allow_html=True)
+                            st.write(f"<h3>주의 음식</h3><p style='font-size:18px;'>{row['caution_food']}</p>", unsafe_allow_html=True)
                         if row['other_notes'].strip():  # 기타 참고사항이 비어 있지 않은 경우에만 출력
-                            st.write(f"<h3>기타 참고사항</h3><p style='font-size:16px;'>{row['other_notes']}</p>", unsafe_allow_html=True)
+                            st.write(f"<h3>기타 참고사항</h3><p style='font-size:18px;'>{row['other_notes']}</p>", unsafe_allow_html=True)
 
 
 
