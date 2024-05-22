@@ -2,6 +2,10 @@
     font-size: 20px;
 }
 
+.st-emotion-cache-13ln4jf {
+    width: 100%;
+    padding: 1.5rem 1rem 10rem;
+}
 
 p, ol, ul, dl {
     margin: 0px 0px 1rem;
@@ -28,3 +32,4 @@ p, ol, ul, dl {
 .link-button:hover {
     color: darkblue;
 }
+
