@@ -172,19 +172,17 @@ if 'response' in st.session_state and st.session_state['response']:
                 
                 # 일치하는 증상 수가 0인 경우 해당 내용을 표시하지 않음
                 top_diseases = df[df['match_count'] > 0].sort_values(by=['match_count', 'total_symptoms'], ascending=[False, True]).head(5)
-                st.markdown('<div id="scroll-target"></div>', unsafe_allow_html=True)  # 스크롤 대상 요소 추가
-
                 components.html("""
                     <h3 id="scroll-target" style="text-align: center;">🧬관련 있는 질병이에요!</h3>
                     <script>
-                        document.getElementById('scroll-target').scrollIntoView();
+                        document.getElementById('scroll-target').scrollIntoView({behavior: "smooth"});
                     </script>
                 """, height=30)
 
 
                 for index, row in top_diseases.iterrows():
                     with st.expander(f"{row['disease_name']}    \n   📖 일치하는 증상 수: {row['match_count']}   \n   🩺 증상:   {row['symptoms']}"):
-                         # 질병 이미지 표시
+                        # 질병 이미지 표시
                         if row['disease_img']:
                             st.image(row['disease_img'], use_column_width=True)
                         if row['detailed_symptoms'].strip():  # 상세 증상이 비어 있지 않은 경우에만 출력
@@ -215,13 +213,6 @@ if 'response' in st.session_state and st.session_state['response']:
                 st.session_state['selected_symptoms'] = []
                 st.session_state['checked_symptoms'] = []
 
-
-                 # 스크롤 이동 스크립트 추가
-                st.markdown("""
-                    <script>
-                    document.getElementById('scroll-target').scrollIntoView({ behavior: 'smooth' });
-                    </script>
-                """, unsafe_allow_html=True)
 
     else:
         st.write("일치하는 증상이 없어요. 다시 입력해주세요.")
