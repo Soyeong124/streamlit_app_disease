@@ -6,6 +6,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from konlpy.tag import Kkma
 import streamlit.components.v1 as components
 import os
+import platform
 
 
 # 로컬 CSS 파일을 로드하는 함수 정의
@@ -17,7 +18,27 @@ def local_css(file_name):
 local_css('css/style.css')
 
 # konlpy 설치를 위한 JAVA_HOME 환경 변수 설정
-os.environ['JAVA_HOME'] = '/usr/lib/jvm/java-11-openjdk-amd64' 
+# os.environ['JAVA_HOME'] = '/usr/lib/jvm/java-11-openjdk-amd64' 
+
+java_home = os.getenv('JAVA_HOME', '')
+if not java_home or not os.path.exists(java_home):
+    system = platform.system()
+    if system == 'Windows':
+            possible_paths = [
+                r'C:\Program Files\Java\jdk-21'
+            ]
+    else: 
+        possible_paths = [
+                r'/usr/lib/jvm/java-11-openjdk-amd64'
+            ]
+    for path in possible_paths:
+            if os.path.exists(path):
+                java_home = path
+                break
+
+os.environ['JAVA_HOME'] = java_home 
+            
+
 
 # Kkma 인스턴스 초기화
 kkma = Kkma()
