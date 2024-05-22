@@ -128,7 +128,8 @@ if 'response' in st.session_state and st.session_state['response']:
 
     if high_confidence_symptoms or low_confidence_symptoms:
         if high_confidence_symptoms:
-            st.write(f"당신의 증상은 아래와 같아요   \n \n  해당하는 증상을 체크하고   \n  아래 '질병 예측하기' 버튼을 클릭해주세요", text_color="gray")
+            st.write(f"당신의 증상은 아래와 같아요")
+            st.write(f"<p style = 'font-size : 16px';>해당하는 증상을 체크하고   \n  아래 '질병 예측하기' 버튼을 클릭해주세요 </p>", unsafe_allow_html=True)
             for item in high_confidence_symptoms:
                 if st.checkbox(item['symptom'], key=f"high_{item['symptom']}"):
                     if item['symptom'] not in st.session_state['selected_symptoms']:
