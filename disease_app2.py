@@ -11,8 +11,6 @@ import os
 import os
 os.environ['JAVA_HOME'] = '/usr/lib/jvm/java-11-openjdk-amd64'  # 설치 경로에 맞게 수정
 
-
-
 # Kkma 인스턴스 초기화
 kkma = Kkma()
 
