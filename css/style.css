@@ -1,5 +1,5 @@
 .st-emotion-cache-1jmvea6 p {
-    font-size: 20px; /* 원하는 크기로 변경하세요 */
+    font-size: 20px;
 }
 
 
@@ -13,4 +13,18 @@ p, ol, ul, dl {
 
 .st-emotion-cache-1r4qj8v {
     color: rgb(73 64 64);
+}
+
+.link-button {
+    background: none;
+    border: none;
+    color: rgb(232,93,33);
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+.link-button:hover {
+    color: darkblue;
 }

@@ -8,39 +8,39 @@ import streamlit.components.v1 as components
 import os
 
 
-
+# 로컬 CSS 파일을 로드하는 함수 정의
 def local_css(file_name):
     with open(file_name, encoding='utf-8') as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-
+# Streamlit 앱에 로컬 CSS 적용
 local_css('css/style.css')
 
-# konlpy 설치를 위해 자바홈 설정 
-import os
-os.environ['JAVA_HOME'] = '/usr/lib/jvm/java-11-openjdk-amd64'  # 설치 경로에 맞게 수정
+# konlpy 설치를 위한 JAVA_HOME 환경 변수 설정
+os.environ['JAVA_HOME'] = '/usr/lib/jvm/java-11-openjdk-amd64' 
 
 # Kkma 인스턴스 초기화
 kkma = Kkma()
 
-# 저장된 전처리 데이터를 로드
+# 전처리된 데이터 및 모델 로드
 with open('processed_data.pkl', 'rb') as f:
     data, tokenized_symptoms, tfidf_matrix, vectorizer = pickle.load(f)
 
 sys_data = pd.read_csv('symptom_description_no_dupl.csv')
 
+# 사용자가 입력한 증상을 기반으로 질병을 예측하는 함수
 def predict(input_value_raw):
+    # 입력값을 콤마(,)로 분할하여 리스트로 변환
     input_values = input_value_raw.split(",")
 
-    # selected_symptoms_info 리스트 초기화: 선택된 증상 정보를 저장합니다.
+    # 선택된 증상 정보와 ID를 저장할 리스트와 집합 초기화
     selected_symptoms_info = []
 
-    # selected_symptoms_id_set 집합 초기화: 선택된 증상의 ID를 저장하여 중복을 방지합니다.
+    # selected_symptoms_id_set 집합 초기화: 선택된 증상의 ID를 저장하여 중복 방지
     selected_symptoms_id_set = set()
 
-    # 형태소 분석을 통해 입력 값을 토큰화
+    # 입력값을 형태소 분석하고, 각 증상과의 유사도를 계산하여 예측
     input_tokenized = [" ".join(kkma.morphs(input_value)) for input_value in input_values]
-    
     for input_value, input_tok in zip(input_values, input_tokenized):
         for index, row in sys_data.iterrows():
             symptom = row['symptoms']
@@ -93,6 +93,9 @@ df = pd.read_pickle('disease_data_final.pkl')
 df = df.fillna(" ")
 df['total_symptoms'] = df['symptoms'].apply(lambda x: len(x.split(', ')))
 
+
+
+
 # Streamlit 애플리케이션 시작
 st.title('✨어디아파?')
 st.write(f'증상을 설명해주세요 \n관련 있는 질병을 찾아드려요') 
@@ -105,7 +108,7 @@ if st.button('확인'):
     if input_value_raw:
         # 로딩 표시 추가
         with st.spinner('분석 중...'):
-            # 상태 초기화
+            # 예측 함수 호출 & 상태 초기화
             st.session_state['response'] = predict(input_value_raw)
             st.session_state['selected_symptoms'] = []
             st.session_state['checked_symptoms'] = []
@@ -162,7 +165,6 @@ if 'response' in st.session_state and st.session_state['response']:
                          # 질병 이미지 표시
                         if row['disease_img']:
                             st.image(row['disease_img'], use_column_width=True)
-
                         if row['detailed_symptoms'].strip():  # 상세 증상이 비어 있지 않은 경우에만 출력
                             st.write(f"<h3>상세 증상</h3><p style='font-size:18px;'>{row['detailed_symptoms']}</p>", unsafe_allow_html=True)
                         if row['department'].strip():  # 진료과가 비어 있지 않은 경우에만 출력
@@ -190,6 +192,8 @@ if 'response' in st.session_state and st.session_state['response']:
                 # 예측 후 선택 증상 초기화
                 st.session_state['selected_symptoms'] = []
                 st.session_state['checked_symptoms'] = []
+
+
                  # 스크롤 이동 스크립트 추가
                 st.markdown("""
                     <script>
@@ -200,29 +204,8 @@ if 'response' in st.session_state and st.session_state['response']:
     else:
         st.write("일치하는 증상이 없어요. 다시 입력해주세요.")
 
-
-components.html("""
-    <html>
-        <head>
-            <style>
-                .link-button {
-                    background: none;
-                    border: none;
-                    color: rgb(232,93,33);
-                    text-decoration: underline;
-                    cursor: pointer;
-                    font-size: 16px;
-                    font-family: inherit;
-                }
-                .link-button:hover {
-                    color: darkblue;
-                }
-            </style>
-        </head>
-        <body>
-            <button class="link-button" onclick="window.open('https://secret-map-dc8.notion.site/4a4f6187c52a4375a9aacc964340a6c6?v=f910f03a1c564805a7a120cda97bd370&pvs=4', '_blank');">
-                원하는 증상이 안 나오나요?
-            </button>
-        </body>
-    </html>
-    """, height=50)
+# 증상 정보 버튼 추가
+st.markdown("""
+    <button class="link-button" onclick="window.open('https://secret-map-dc8.notion.site/4a4f6187c52a4375a9aacc964340a6c6?v=f910f03a1c564805a7a120cda97bd370&pvs=4', '_blank');">
+                원하는 증상이 안 나오나요?</button>
+    """, unsafe_allow_html=True)
