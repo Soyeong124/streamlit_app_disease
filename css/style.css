@@ -24,7 +24,7 @@ p, ol, ul, dl {
     color: rgb(73 64 64);
 }
 
-.link-button {
+/* .link-button {
     background: none;
     border: none;
     color: rgb(232,93,33);
@@ -36,5 +36,5 @@ p, ol, ul, dl {
 
 .link-button:hover {
     color: darkblue;
-}
+} */
 
