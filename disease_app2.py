@@ -7,7 +7,7 @@ from konlpy.tag import Kkma
 import streamlit.components.v1 as components
 import os
 
-# 수정사항 1 - konlpy 설치를 위해 자바홈 설정
+# konlpy 설치를 위해 자바홈 설정 
 import os
 os.environ['JAVA_HOME'] = '/usr/lib/jvm/java-11-openjdk-amd64'  # 설치 경로에 맞게 수정
 
